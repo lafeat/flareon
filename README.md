@@ -5,7 +5,7 @@
 This is the official release 
 of "Flareon: Stealthy Backdoor Injection via Poisoned Augmentation."
 
-![image](https://github.com/lafeat/flareon/blob/main/utils/img.png)
+![High-level overview](https://github.com/lafeat/flareon/blob/main/assets/overview.png)
 
 ## Requirements
 
@@ -14,52 +14,48 @@ of "Flareon: Stealthy Backdoor Injection via Poisoned Augmentation."
 $ python -m pip install -r requirements.py
 ```
 
-## Experiments
+## Training
 Training commands are as follows.
 
+* Any-to-any:
+```bash
+$ python train.py --dataset <dataset name> --attack_ratio <ratio> --ag <augment> --s <beta>
+```
+* Adaptive any-to-any:
+```bash
+$ python train_learn.py --dataset <dataset name> --attack_ratio <ratio> --ag <augment> --s <beta> --warmup_epochs <epochs>
+```
+* Any-to-one:
+```bash
+$ python train.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta>
+```
+* Adaptive any-to-one:
+```bash
+$ python train_learn.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta> --warmup_epochs <epochs> --eps <constraint>
+```
+
+The parameter choices for the above commands are as follows:
+- Dataset `<dataset name>`: `cifar10` , `celeba`, `tinyimagenet`.
+- Poison proportion `<ratio>`: `0` ~ `100`
+- Choice of augmentation `<augment>`: `autoaug`, `randaug`
+- Trigger initialization `<beta>`: `1` , `2`, `4` `...`
+- Warmup epochs `<epochs>`: `0` ~ `10`
+- Learned trigger constraint boundary `<constraint>`: `0.1` (for CIFAR-10), `0.01` (for CelebA), `0.2` (for t-ImageNet)
+- `--target_label`: Labels to be attacked, only in `any2one` mode.
+
+The trained checkpoints will be saved at `checkpoints/`.
+
+## Evaluation
+
+To evaluate trained models, run command:
+
 #### Any-to-any:
 ```bash
-$ python train.py --dataset <datasetName> --attack_ratio <ratio> --ag <augment> --s <beta>
-```
-##### Adaptive attacks:
-```bash
-$ python train_learn.py --dataset <datasetName> --attack_ratio <ratio> --ag <augment> --s <beta> --warmup_epochs <epochset>
-```
-#### Any-to-one:
-```bash
-$ python train.py --dataset <datasetName> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta>
-```
-##### Adaptive attacks:
-```bash
-$ python train_learn.py --dataset <datasetName> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta> --warmup_epochs <epochset> --eps <constrain>
-```
-where the parameter choices are as follows:
-- `<datasetName>`: `cifar10` , `celeba`, `tinyimagenet`.
-- `<ratio>`: `range[0, 100]`
-- `<augment>`: `flowag` , `autoag`, `randag`
-- `<beat>`: `1` , `2`, `4` `...`
-- `<epochset>`: `0` ~ `10`
-- `<constrain>`: `0.1 (for CIFAR10)` `0.01 (for CelebA)``0.2 (for t-ImageNet)`
-
-Other parameters are the following:
-- `--target_label`: Labels to be attacked
-
-The trained checkpoints will be saved at the path `checkpoints`.
-
-To evaluate trained models or resume training, run command:
-
-#### Any-to-any:
-```bash
-$ python test.py --dataset <datasetName> --attack_choice any2any --attack_ratio <ratio> --ag <augment> --s <beta>
+$ python test.py --dataset <dataset name> --attack_choice any2any --attack_ratio <ratio> --ag <augment> --s <beta>
 
 ```
 
 #### Any-to-one:
 ```bash
-$ python test.py --dataset <datasetName> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta>
-```
-
-#### For adaptive learning:
-```
---warmup_epochs <epochset>
+$ python test.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta>
 ```
