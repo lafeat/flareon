@@ -235,7 +235,7 @@ def main():
 
     # Load pretrained model
     opt.ckpt_folder = os.path.join(opt.checkpoints,
-                                   'ResNet18_warm={}_train_learn_{}_at_ratio={}_ag_ratio={}_s={}_attack_choice={}'.format
+                                   'ResNet18_warm={}_train_learn_{}_at_ratio={}_aug_ratio={}_s={}_attack_choice={}'.format
                                    (opt.warmup_epochs, opt.dataset, opt.attack_ratio,
                                     opt.transform_ratio, opt.s, opt.attack_choice))
     opt.ckpt_path = os.path.join(opt.ckpt_folder, "train_learn_{}.pth.tar".format(opt.dataset))

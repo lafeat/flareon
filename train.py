@@ -208,7 +208,7 @@ def main():
 
     # Load pretrained model
     opt.ckpt_folder = os.path.join(opt.checkpoints,
-                                   'ResNet18_{}-at_ratio={}-ag_ratio={}-s={}-mode={}'.format(
+                                   'ResNet18_{}-at_ratio={}-aug_ratio={}-s={}-mode={}'.format(
                                        opt.dataset, opt.attack_ratio, opt.transform_ratio, opt.s, opt.attack_choice))
     opt.ckpt_path = os.path.join(opt.ckpt_folder, "{}.pth.tar".format(opt.dataset))
     opt.log_dir = os.path.join(opt.ckpt_folder, "log_dir")

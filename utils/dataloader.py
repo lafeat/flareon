@@ -37,17 +37,26 @@ def get_transform(opt, train=True):
             elif opt.aug == "randaug":
                 transforms_list.append(transforms.RandomHorizontalFlip(p=0.5))
                 transforms_list.append(Rand_Augment(Numbers=3, max_Magnitude=5))
+            elif opt.aug == "autoaug":
+                transforms_list.append(transforms.RandomHorizontalFlip(p=0.5))
+                transforms_list.append(CIFAR10Policy())
+            else:
+                raise ValueError("ValueError")
         transforms_list.append(transforms.ToTensor())
         transforms_list.append(transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)))
     elif opt.dataset == "celeba":
-        if opt.aug == "flowaug":
-            if train:
+        if train:
+            if opt.aug == "flowaug":
                 transforms_list.append(Flow_Augment(Numbers=2, max_Magnitude=5))
+            else:
+                raise ValueError("ValueError")
         transforms_list.append(transforms.ToTensor())
     elif opt.dataset == "tinyimagenet":
-        if opt.aug == "flowaug":
-            if train:
+        if train:
+            if opt.aug == "flowaug":
                 transforms_list.append(Flow_Augment(Numbers=2, max_Magnitude=9))
+            else:
+                raise ValueError("ValueError")
         transforms_list.append(transforms.ToTensor())
         transforms_list.append(transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]))
     else:
