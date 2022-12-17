@@ -2,7 +2,7 @@
 
 ## Introdution
 
-This is the official release 
+This is the official release
 of "Flareon: Stealthy Backdoor Injection via Poisoned Augmentation."
 
 ![High-level overview](https://github.com/lafeat/flareon/blob/main/assets/overview.png)
@@ -19,19 +19,19 @@ Training commands are as follows.
 
 * Any-to-any:
 ```bash
-$ python train.py --dataset <dataset name> --attack_ratio <ratio> --ag <augment> --s <beta>
+$ python train.py --dataset <dataset name> --attack_ratio <ratio> --aug <augment> --s <beta>
 ```
 * Adaptive any-to-any:
 ```bash
-$ python train_learn.py --dataset <dataset name> --attack_ratio <ratio> --ag <augment> --s <beta> --warmup_epochs <epochs>
+$ python train_learn.py --dataset <dataset name> --attack_ratio <ratio> --aug <augment> --s <beta> --warmup_epochs <epochs>
 ```
 * Any-to-one:
 ```bash
-$ python train.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta>
+$ python train.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --aug <augment> --s <beta>
 ```
 * Adaptive any-to-one:
 ```bash
-$ python train_learn.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta> --warmup_epochs <epochs> --eps <constraint>
+$ python train_learn.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --aug <augment> --s <beta> --warmup_epochs <epochs> --eps <constraint>
 ```
 
 The parameter choices for the above commands are as follows:
@@ -51,11 +51,11 @@ To evaluate trained models, run command:
 
 #### Any-to-any:
 ```bash
-$ python test.py --dataset <dataset name> --attack_choice any2any --attack_ratio <ratio> --ag <augment> --s <beta>
+$ python test.py --dataset <dataset name> --attack_choice any2any --attack_ratio <ratio> --aug <augment> --s <beta>
 
 ```
 
 #### Any-to-one:
 ```bash
-$ python test.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --ag <augment> --s <beta>
+$ python test.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --aug <augment> --s <beta>
 ```
