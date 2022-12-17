@@ -31,21 +31,21 @@ def get_transform(opt, train=True):
     transforms_list.append(transforms.Resize((opt.input_height, opt.input_width)))
     if opt.dataset == "cifar10":
         if train:
-            if opt.ag == "flowag":
+            if opt.aug == "flowaug":
                 transforms_list.append(transforms.RandomHorizontalFlip(p=0.5))
                 transforms_list.append(Flow_Augment(Numbers=2, max_Magnitude=5))
-            elif opt.ag == "randag":
+            elif opt.aug == "randaug":
                 transforms_list.append(transforms.RandomHorizontalFlip(p=0.5))
                 transforms_list.append(Rand_Augment(Numbers=3, max_Magnitude=5))
         transforms_list.append(transforms.ToTensor())
         transforms_list.append(transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)))
     elif opt.dataset == "celeba":
-        if opt.ag == "flowag":
+        if opt.aug == "flowaug":
             if train:
                 transforms_list.append(Flow_Augment(Numbers=2, max_Magnitude=5))
         transforms_list.append(transforms.ToTensor())
     elif opt.dataset == "tinyimagenet":
-        if opt.ag == "flowag":
+        if opt.aug == "flowaug":
             if train:
                 transforms_list.append(Flow_Augment(Numbers=2, max_Magnitude=9))
         transforms_list.append(transforms.ToTensor())

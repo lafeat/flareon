@@ -41,7 +41,7 @@ def train(net, optimizer, scheduler, train_dl, identity_grid, ins, tf_writer, ep
         if opt.dataset == "cifar10":
             inputs = rand_crop(inputs)
 
-        if opt.ag == "flowag":
+        if opt.aug == "flowaug":
             inputs[bs * opt.transform_ratio // 100:] = transforms(inputs[bs * opt.transform_ratio // 100:])
 
         if opt.attack_choice == "any2any":

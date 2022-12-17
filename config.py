@@ -22,5 +22,5 @@ def get_arguments():
     parser.add_argument("--eps", type=float, default=0.1)
     parser.add_argument("--s", type=int, default=1)
     parser.add_argument("--lr_iter", type=int, default=30)
-    parser.add_argument("--ag", type=str, default="flowag")
+    parser.add_argument("--aug", type=str, default="flowaug")
     return parser
