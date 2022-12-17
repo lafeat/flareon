@@ -2,8 +2,10 @@
 
 ## Introdution
 
-This is the supplemental material
+This is the official release 
 of "Flareon: Stealthy Backdoor Injection via Poisoned Augmentation."
+
+![image](https://github.com/lafeat/flareon/blob/main/utils/img.png)
 
 ## Requirements
 
