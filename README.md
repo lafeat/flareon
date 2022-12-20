@@ -12,28 +12,47 @@ of "Flareon: Stealthy Backdoor Injection via Poisoned Augmentation."
 
 - Install required python packages:
 ```bash
-$ python -m pip install -r requirements.py
+python -m pip install -r requirements.py
 ```
 
 ## Training
 Training commands are as follows.
 
 * Any-to-any:
-```bash
-$ python train.py --dataset <dataset name> --attack_ratio <ratio> --aug <augment> --s <beta>
+```console
+python train.py --dataset <dataset name> \
+                --attack_ratio <ratio>   \
+                --aug <augment>          \
+                --s <beta>               
 ```
 * Adaptive any-to-any:
-```bash
-$ python train_learn.py --dataset <dataset name> --attack_ratio <ratio> --aug <augment> --s <beta> --warmup_epochs <epochs>
+```console
+python train.py --dataset <dataset name> \
+                --attack_ratio <ratio>   \
+                --aug <augment>          \
+                --s <beta>               \
+                --warmup_epochs <epochs> \
+                --eps <constraint>       
 ```
 * Any-to-one:
-```bash
-$ python train.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --aug <augment> --s <beta>
+```console
+python train.py --dataset <dataset name> \
+                --attack_choice any2one  \
+                --attack_ratio <ratio>   \
+                --aug <augment>          \
+                --s <beta>               
 ```
 * Adaptive any-to-one:
-```bash
-$ python train_learn.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --aug <augment> --s <beta> --warmup_epochs <epochs> --eps <constraint>
+```console
+python train.py --dataset <dataset name> \
+                --attack_choice any2one  \
+                --attack_ratio <ratio>   \
+                --aug <augment>          \
+                --s <beta>               \
+                --warmup_epochs <epochs> \
+                --eps <constraint>       
 ```
+
 
 The parameter choices for the above commands are as follows:
 - Dataset `<dataset name>`: `cifar10` , `celeba`, `tinyimagenet`.
@@ -51,12 +70,18 @@ The trained checkpoints will be saved at `checkpoints/`.
 To evaluate trained models, run command:
 
 #### Any-to-any:
-```bash
-$ python test.py --dataset <dataset name> --attack_choice any2any --attack_ratio <ratio> --aug <augment> --s <beta>
-
+```console
+python test.py --dataset <dataset name>  \
+                --attack_ratio <ratio>   \
+                --attack_choice any2any  \
+                --s <beta>               
 ```
 
 #### Any-to-one:
-```bash
-$ python test.py --dataset <dataset name> --attack_choice any2one --attack_ratio <ratio> --aug <augment> --s <beta>
+```console
+python test.py --dataset <dataset name>  \
+                --attack_ratio <ratio>   \
+                --attack_choice any2one  \
+                --s <beta>               
 ```
+
