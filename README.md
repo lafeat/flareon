@@ -61,7 +61,7 @@ The parameter choices for the above commands are as follows:
 - Trigger initialization `<beta>`: `1` , `2`, `4` `...`
 - Warmup epochs `<epochs>`: `0` ~ `10`
 - Learned trigger constraint boundary `<constraint>`: `0.1` (for CIFAR-10), `0.01` (for CelebA), `0.2` (for t-ImageNet)
-- `--target_label`: Labels to be attacked, only in `any2one` mode.
+- Labels to be attacked `--target_label`: `any2one` mode, to choose attacked target label.
 
 The trained checkpoints will be saved at `checkpoints/`.
 
