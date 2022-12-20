@@ -85,3 +85,6 @@ python test.py --dataset <dataset name>  \
                 --s <beta>               
 ```
 
+### Acknowledgement
+- WaNet Attack [Code](https://github.com/VinAIResearch/Warping-based_Backdoor_Attack-release) [Paper](https://openreview.net/pdf?id=eEn8KTtJOx)
+
