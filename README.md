@@ -29,7 +29,7 @@ python train.py \
 
 * Adaptive any-to-any:
 ```shell
-python train.py \
+python train_learn.py \
     --dataset <dataset name> \
     --attack_ratio <ratio>   \
     --aug <augment>          \
@@ -50,7 +50,7 @@ python train.py \
 
 * Adaptive any-to-one:
 ```shell
-python train.py \
+python train_learn.py \
     --dataset <dataset name> \
     --attack_choice any2one  \
     --attack_ratio <ratio>   \
